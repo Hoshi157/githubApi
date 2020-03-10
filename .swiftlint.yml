@@ -6,6 +6,7 @@ disabled_rules:
 - force_cast
 
 - identifier_name
+- line_length
 
 # デフォルト無効のルールのうち、有効にするもの。
 opt_in_rules:

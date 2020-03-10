@@ -8,6 +8,12 @@
 
 import Foundation
 
+// Codableで振り分ける
 struct GithubStruct: Codable {
-    var total_count: Int
+    let items: [Items]
+}
+struct Items: Codable {
+    let login: String
+    let type: String
+    let avatar_url: String
 }

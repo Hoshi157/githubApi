@@ -10,25 +10,33 @@ import Foundation
 
 class Model {
     
-    let url = "https://api.github.com/search/users"
+    let url: String = "https://api.github.com/search/users"
     
-    func fetchArticle() {
+    // searchTextからフェッチするメソッド
+    func fetchArticle(keyword: String, completion: @escaping (GithubStruct) -> Void) {
         guard var urlComponents = URLComponents(string: url) else {
             return
         }
-        urlComponents.queryItems = [ URLQueryItem(name: "q", value: "Hoshi157") ]
-        let task = URLSession.shared.dataTask(with: urlComponents.url!){ data, response, error in
+        // keywordを含むuserを10件取得する
+        urlComponents.queryItems = [
+            URLQueryItem(name: "q", value: keyword),
+            URLQueryItem(name: "per_page", value: "10")
+        ]
+        // URLSessionでリクエストする
+        let task: URLSessionTask = URLSession.shared.dataTask(with: urlComponents.url!) { data, _, error in
             guard let jsonData = data else {
                 return
             }
-            print("jsonData:\(jsonData)")
             do {
-                let articles = try JSONDecoder().decode(GithubStruct.self, from: jsonData)
+                let articles: GithubStruct = try JSONDecoder().decode(GithubStruct.self, from: jsonData)
+                //　非同期処理完了ハンドラへ渡す
+                completion(articles)
                 print("articles:\(articles)")
             } catch {
                 print("Error:\(error.localizedDescription)")
             }
         }
+        // 通信開始
         task.resume()
     }
 }
