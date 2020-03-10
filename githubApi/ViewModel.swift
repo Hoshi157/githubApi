@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Model {
+class ViewModel {
     
     let url: String = "https://api.github.com/search/users"
     

@@ -13,7 +13,8 @@
 		8DB17BF82411298600C98A2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB17BF62411298600C98A2D /* Main.storyboard */; };
 		8DB17BFA2411298600C98A2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DB17BF92411298600C98A2D /* Assets.xcassets */; };
 		8DB17BFD2411298600C98A2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB17BFB2411298600C98A2D /* LaunchScreen.storyboard */; };
-		8DB17C0524112AB800C98A2D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB17C0424112AB800C98A2D /* Model.swift */; };
+		8DB17C0524112AB800C98A2D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB17C0424112AB800C98A2D /* ViewModel.swift */; };
+		8DB542A22417934D005636CD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB542A12417934D005636CD /* WebViewController.swift */; };
 		8DBED1A92412103100B85635 /* GithubStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBED1A82412103100B85635 /* GithubStruct.swift */; };
 		F3E7C517DF691673D41766D3 /* Pods_githubApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9886BF78C95870B04802EE /* Pods_githubApi.framework */; };
 /* End PBXBuildFile section */
@@ -28,7 +29,8 @@
 		8DB17BF92411298600C98A2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DB17BFC2411298600C98A2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DB17BFE2411298600C98A2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DB17C0424112AB800C98A2D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		8DB17C0424112AB800C98A2D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		8DB542A12417934D005636CD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		8DBED1A82412103100B85635 /* GithubStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubStruct.swift; sourceTree = "<group>"; };
 		A6B5E1FE5DA04AF3E07E13A8 /* Pods-githubApi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-githubApi.debug.xcconfig"; path = "Target Support Files/Pods-githubApi/Pods-githubApi.debug.xcconfig"; sourceTree = "<group>"; };
 		DBBC99125245DDB7AA3F4090 /* Pods-githubApi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-githubApi.release.xcconfig"; path = "Target Support Files/Pods-githubApi/Pods-githubApi.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,8 +89,9 @@
 				8DB17BF02411298600C98A2D /* AppDelegate.swift */,
 				8DB17BF22411298600C98A2D /* SceneDelegate.swift */,
 				8DB17BF42411298600C98A2D /* ViewController.swift */,
-				8DB17C0424112AB800C98A2D /* Model.swift */,
+				8DB17C0424112AB800C98A2D /* ViewModel.swift */,
 				8DBED1A82412103100B85635 /* GithubStruct.swift */,
+				8DB542A12417934D005636CD /* WebViewController.swift */,
 				8DB17BF62411298600C98A2D /* Main.storyboard */,
 				8DB17BF92411298600C98A2D /* Assets.xcassets */,
 				8DB17BFB2411298600C98A2D /* LaunchScreen.storyboard */,
@@ -213,9 +216,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DB17BF52411298600C98A2D /* ViewController.swift in Sources */,
+				8DB542A22417934D005636CD /* WebViewController.swift in Sources */,
 				8DB17BF12411298600C98A2D /* AppDelegate.swift in Sources */,
 				8DB17BF32411298600C98A2D /* SceneDelegate.swift in Sources */,
-				8DB17C0524112AB800C98A2D /* Model.swift in Sources */,
+				8DB17C0524112AB800C98A2D /* ViewModel.swift in Sources */,
 				8DBED1A92412103100B85635 /* GithubStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
