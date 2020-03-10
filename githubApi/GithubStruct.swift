@@ -10,6 +10,7 @@ import Foundation
 
 // Codableで振り分ける
 struct GithubStruct: Codable {
+    let total_count: Int
     let items: [Items]
 }
 struct Items: Codable {

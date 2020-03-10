@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     let model: ViewModel = ViewModel()
     // userのリスト(タプル配列)
     var githubStruct: [(login: String, type: String, avatar_url: String, html_url: String)] = []
+    // 検索に対してのレスポンス数
+    var totalCount: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +73,12 @@ extension ViewController: UITextFieldDelegate {
         if textField.text != "" {
             model.fetchArticle(keyword: textField.text!, completion: { (GithubStruct) in
                 let items: [Items] = GithubStruct.items
+                
+                // 検索結果数を変数へ入れる
+                self.totalCount = GithubStruct.total_count
+                if self.totalCount == 0 {
+                    self.alet()
+                }
                 // Itemを取り出す
                 for item in items {
                     let login: String = item.login
@@ -94,5 +102,13 @@ extension ViewController: UITextFieldDelegate {
             }
         }
         return true
+    }
+    
+    // 検索結果が0のときにアラートを表示する
+    func alet() {
+        let aletController: UIAlertController = UIAlertController(title: "アラート", message: "検索結果が0件でした", preferredStyle: .alert)
+        let aletAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        aletController.addAction(aletAction)
+        present(aletController, animated: true)
     }
 }

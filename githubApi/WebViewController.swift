@@ -17,6 +17,7 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("linkUrl=\(self.linkUrl!)")
         openUrl(urlString: linkUrl!, webView: webView)
 
