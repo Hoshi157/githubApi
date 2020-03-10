@@ -16,5 +16,5 @@ struct Items: Codable {
     let login: String
     let type: String
     let avatar_url: String
-    let html_url:String
-}
+    let html_url: String
+    }

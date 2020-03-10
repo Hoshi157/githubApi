@@ -11,7 +11,7 @@ import WebKit
 
 class WebViewController: UIViewController {
     
-    // userリポジトリのURL
+    // userHTMLのURL
     var linkUrl: String?
     @IBOutlet weak var webView: WKWebView!
     
@@ -22,7 +22,7 @@ class WebViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+    // URLをリクエスト
     func openUrl(urlString: String, webView: WKWebView) {
         let url: URL = URL(string: urlString)!
         let urlRequest: URLRequest = URLRequest(url: url)

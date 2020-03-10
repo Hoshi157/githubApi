@@ -38,6 +38,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let userType: String = githubStruct[indexPath.row].type
         cell.textLabel?.text = name
         cell.detailTextLabel?.text = userType
+        // imageをセルに表示する
+        let imageUrl: URL = URL(string: githubStruct[indexPath.row].avatar_url)!
+        if let imageData: Data = try? Data(contentsOf: imageUrl) {
+            cell.imageView?.image = UIImage(data: imageData)
+        }
         return cell
     }
     // セルがタップされたときの挙動
