@@ -41,7 +41,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = name
         cell.detailTextLabel?.text = userType
         // imageをセルに表示する
-        let imageUrl: URL = URL(string: githubStruct[indexPath.row].avatar_url)!
+            let imageUrl: URL = URL(string: self.githubStruct[indexPath.row].avatar_url)!
         if let imageData: Data = try? Data(contentsOf: imageUrl) {
             cell.imageView?.image = UIImage(data: imageData)
         }
@@ -72,12 +72,13 @@ extension ViewController: UITextFieldDelegate {
         // searchTextに文字が入力されているときに処理する
         if textField.text != "" {
             model.fetchArticle(keyword: textField.text!, completion: { (GithubStruct) in
+                print("GithubStruct=\(GithubStruct)")
                 let items: [Items] = GithubStruct.items
                 
-                // 検索結果数を変数へ入れる
                 self.totalCount = GithubStruct.total_count
+                // totalCountは検索結果の件数
                 if self.totalCount == 0 {
-                    self.alet()
+                    self.alet(message: "検索結果が0件でした")
                 }
                 // Itemを取り出す
                 for item in items {
@@ -105,8 +106,8 @@ extension ViewController: UITextFieldDelegate {
     }
     
     // 検索結果が0のときにアラートを表示する
-    func alet() {
-        let aletController: UIAlertController = UIAlertController(title: "アラート", message: "検索結果が0件でした", preferredStyle: .alert)
+    func alet(message: String) {
+        let aletController: UIAlertController = UIAlertController(title: "アラート", message: message, preferredStyle: .alert)
         let aletAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         aletController.addAction(aletAction)
         present(aletController, animated: true)

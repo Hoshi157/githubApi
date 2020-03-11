@@ -14,16 +14,19 @@ class ViewModel {
     
     // リクエストメソッド
     func fetchArticle(keyword: String, completion: @escaping (GithubStruct) -> Void) {
-        guard var urlComponents = URLComponents(string: url) else {
+        
+        guard var urlComponents: URLComponents = URLComponents(string: url) else {
             return
         }
-        // keywordを含むuserを20件まで取得する
+        // keywordを含む20件を取得
         urlComponents.queryItems = [
             URLQueryItem(name: "q", value: keyword),
             URLQueryItem(name: "per_page", value: "20")
         ]
+        print("urlComponents==\(urlComponents)")
+        
         // URLSessionでリクエストする
-        let task: URLSessionTask = URLSession.shared.dataTask(with: urlComponents.url!) { data, _, error in
+        let task: URLSessionDataTask = URLSession.shared.dataTask(with: urlComponents.url!) { data, _, error in
             guard let jsonData = data else {
                 return
             }

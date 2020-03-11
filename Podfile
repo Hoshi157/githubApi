@@ -7,4 +7,9 @@ target 'githubApi' do
 
   # Pods for githubApi
 pod 'SwiftLint'
+
+ target 'githubApiTests' do
+     inherit! :search_paths
+     # Pods for testing
+end
 end
