@@ -21,6 +21,7 @@ class ViewModel {
         // keywordを含む20件を取得
         urlComponents.queryItems = [
             URLQueryItem(name: "q", value: keyword),
+            URLQueryItem(name: "page", value: "1"),
             URLQueryItem(name: "per_page", value: "20")
         ]
         print("urlComponents==\(urlComponents)")

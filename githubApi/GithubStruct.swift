@@ -18,4 +18,4 @@ struct Items: Codable {
     let type: String
     let avatar_url: String
     let html_url: String
-    }
+}

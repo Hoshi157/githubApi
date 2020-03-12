@@ -41,7 +41,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = name
         cell.detailTextLabel?.text = userType
         // imageをセルに表示する
-            let imageUrl: URL = URL(string: self.githubStruct[indexPath.row].avatar_url)!
+        let imageUrl: URL = URL(string: self.githubStruct[indexPath.row].avatar_url)!
         if let imageData: Data = try? Data(contentsOf: imageUrl) {
             cell.imageView?.image = UIImage(data: imageData)
         }
@@ -73,13 +73,8 @@ extension ViewController: UITextFieldDelegate {
         if textField.text != "" {
             model.fetchArticle(keyword: textField.text!, completion: { (GithubStruct) in
                 print("GithubStruct=\(GithubStruct)")
-                let items: [Items] = GithubStruct.items
                 
-                self.totalCount = GithubStruct.total_count
-                // totalCountは検索結果の件数
-                if self.totalCount == 0 {
-                    self.alet(message: "検索結果が0件でした")
-                }
+                let items: [Items] = GithubStruct.items
                 // Itemを取り出す
                 for item in items {
                     let login: String = item.login
@@ -89,11 +84,15 @@ extension ViewController: UITextFieldDelegate {
                     
                     let gitTuple: (login: String, type: String, avatar_url: String, html_url: String) = (login, type, avatar_url, html_url)
                     self.githubStruct.append(gitTuple)
-                    print("githubStruct=\(self.githubStruct)")
                 }
+                print("githubStruct=\(self.githubStruct)")
                 // tableViewを更新
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    // items配列が空(検索結果が0)だったらアラート表示
+                    if items.isEmpty {
+                        self.alert(title: "アラート", message: "検索件数が0件です")
+                    }
                 }
             })
         } else {
@@ -105,11 +104,11 @@ extension ViewController: UITextFieldDelegate {
         return true
     }
     
-    // 検索結果が0のときにアラートを表示する
-    func alet(message: String) {
-        let aletController: UIAlertController = UIAlertController(title: "アラート", message: message, preferredStyle: .alert)
-        let aletAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        aletController.addAction(aletAction)
-        present(aletController, animated: true)
+    // アラート
+    func alert(title: String, message: String) {
+        let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
