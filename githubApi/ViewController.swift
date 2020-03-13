@@ -24,14 +24,16 @@ class ViewController: UIViewController {
         tableView.delegate = self
         searchTextField.delegate = self
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(keyboardClose(_:)))
+        tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
     }
-    
-    // 画面をタップするとキーボードが閉じる
+    // キーボードが隠れる様にする
     @objc
-    func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-        self.view.endEditing(true)
+    func keyboardClose(_: UITapGestureRecognizer) {
+        if searchTextField.isFirstResponder {
+            searchTextField.resignFirstResponder()
+        }
     }
 }
 
@@ -49,6 +51,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let userType: String = githubStruct[indexPath.row].type
         cell.textLabel?.text = name
         cell.detailTextLabel?.text = userType
+        
         // imageをセルに表示する
         let imageUrl: URL = URL(string: self.githubStruct[indexPath.row].avatar_url)!
         if let imageData: Data = try? Data(contentsOf: imageUrl) {
