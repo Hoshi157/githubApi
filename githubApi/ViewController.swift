@@ -23,6 +23,15 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         searchTextField.delegate = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    // 画面をタップするとキーボードが閉じる
+    @objc
+    func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
 }
 
