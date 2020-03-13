@@ -16,7 +16,8 @@ GitHubのapiを使用したuser検索アプリケーション
 * tableViewのスクロールが滑らかに動かないことから
 
 ~~~
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell 
+let imageUrl: URL = URL(string: self.githubStruct[indexPath.row].avatar_url)!    
    DispatchQueue.global().async {  
      let data = Data(contentsOf: imageUrl)
         DispatchQueue.main.async {  
