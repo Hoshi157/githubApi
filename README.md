@@ -15,7 +15,7 @@ GitHubのapiを使用したuser検索アプリケーション
 ## 問題点
 * tableViewのスクロールが滑らかに動かないことから
 
-'''swift:title
+'''swift:title  
 DispatchQueue.global().async {  
 let data = Data(contentsOf: url)
 DispatchQueue.main.async {  
