@@ -19,6 +19,7 @@ GitHubのapiを使用したuser検索アプリケーション
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell 
   
 let imageUrl: URL = URL(string: self.githubStruct[indexPath.row].avatar_url)!(画像のURLを取得)  
+  
    DispatchQueue.global().async {  
      let data = Data(contentsOf: imageUrl)
         DispatchQueue.main.async {  
