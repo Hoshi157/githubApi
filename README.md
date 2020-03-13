@@ -18,7 +18,7 @@ GitHubのapiを使用したuser検索アプリケーション
 ~~~
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  
    DispatchQueue.global().async {  
-     let data = Data(contentsOf: url)
+     let data = Data(contentsOf: imageUrl)
         DispatchQueue.main.async {  
           cell.imageView.image = UIImage(data: data)  
            tableView.reloaddata  
