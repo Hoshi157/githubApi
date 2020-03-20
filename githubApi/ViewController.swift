@@ -52,10 +52,21 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = name
         cell.detailTextLabel?.text = userType
         
-        // imageをセルに表示する
+        // imageを非同期にて表示する
         let imageUrl: URL = URL(string: self.githubStruct[indexPath.row].avatar_url)!
-        if let imageData: Data = try? Data(contentsOf: imageUrl) {
-            cell.imageView?.image = UIImage(data: imageData)
+        DispatchQueue.global().async {
+            do {
+                let imageData: Data = try Data(contentsOf: imageUrl)
+                DispatchQueue.main.async {
+                    cell.imageView?.image = UIImage(data: imageData)
+                    // サブビュー再描画
+                    cell.setNeedsLayout()
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    cell.imageView?.image = #imageLiteral(resourceName: "noImage")
+                }
+            }
         }
         return cell
     }
